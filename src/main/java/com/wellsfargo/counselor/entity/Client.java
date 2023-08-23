@@ -14,7 +14,7 @@ import jakarta.persistence.Id;
 
 // using this class we can use JPA to perform database operations for fin.
 // advisors using relational relationshoips in the database.
-public class Advisor {
+public class Client {
 
     @Id // Primary key field
     @GeneratedValue()
@@ -35,16 +35,22 @@ public class Advisor {
     @Column(nullable = false)
     private String email;
 
-    protected Advisor() {
+    @Column(nullable = false)
+    private String clientId;
+
+    protected Client() {
 
     }
 
-    public Advisor(String firstName, String lastName, String address, String phone, String email) {
+    public Client(String firstName, String lastName, String address, String phone, String email, long advisorId,
+            String clientId) {
+        this.clientId = clientId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
         this.email = email;
+        this.advisorId = advisorId;
     }
 
     public Long getAdvisorId() {
